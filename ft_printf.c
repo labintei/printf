@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 13:44:03 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/16 12:07:09 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/17 15:42:04 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,10 @@ int		ft_print_flags(struct f_flags *f, va_list ap)
 
 int		ft_printf_type(char t, va_list ap)
 {
-	/*
-	if(t == -2)
-		return(0);
 	if(t == 'c')
-		return(ft_putchar(t));
+		return(ft_putchar(va_arg(ap, int), 1));
 	if(t == 's')
-		return(ft_putstr())
-	if(t == 'p')
-		return(ft_print_p(va_arg()))
-	if(t == 'd' || t == 'i')
-		return(ft_print_int(va_arg(),1)
-	if(t == 'u')
-		return(ft_print_unsigned(va_arg(), 1)
-	if(t == 'x' || t == 'X')
-		return()
-	if(t == '%')
-		return(ft_putchar(t));
-	*/
+		return(ft_putstr(va_arg(ap, char*), 1, 0));
 	return(-1);
 }
 
@@ -73,9 +59,8 @@ int		ft_printf(const char *s,...)
 		}
 		if(s[n] == '%')
 		{
-			i = ft_taille_flags(s);
-			ret += print_flags(s + n, ap);
-			n += i;
+			ret +=ft_print_type('u', 1, ap);
+			n += 2;
 		}
 	}
 	va_end(ap);

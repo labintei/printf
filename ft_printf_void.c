@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 14:56:48 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/16 12:26:25 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/17 15:51:36 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,24 +45,26 @@ char	ft_precision(const char *s, int *i)
 	char	z;
 
 	z = 0;
-	if(s[(*i)] && ft_find(s[(*i)], "*"))
+	while(s[(*i)] && ft_find(s[(*i)], "*"))
 	{	
 		if(z == 0)
 			z = 1;
 		(*i)++;
 	}
-	if(s[(*i)] && ft_find(s[(*i)],"."))
+	while(s[(*i)] && ft_find(s[(*i)],"."))
 	{
 		if(z == 0 || z == 1)
 			z += 2;
 		(*i)++;
 	}
-	if(s[(*i)] && ft_find(s[(*i)],"*"))
+	while(s[(*i)] && ft_find(s[(*i)],"*"))
 	{
-		if(z == 0 || z == 2 || z == 3)
+		if(z == 2 || z == 3)
 				z += 3;
 		(*i)++;
 	}
+	while(ft_find((s[*i]), ".*"))
+		(*i)++;
 	return(z + '0');
 }
 

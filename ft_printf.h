@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 13:43:17 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/16 09:43:30 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/17 14:24:34 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,16 @@ char	ft_find(const char c, const char *s);
 int		ft_taille_flags(const char *s);
 int		print_flags(const char *s, va_list ap, ...);
 int		ft_printf(const char *s, ...);
+
+
+int		ft_unsigned(unsigned int n, char z);
+int		size_int(long int n, int sizebase);
+int		ft_putchar(int n, char y);
+int		ft_putstr(char *s, char y, size_t n);
+int		basehexa(long int n, char a, char y);
+int		print_int(int n, char y);
+int		print_p(int c);
+
+int		ft_print_type(char c, char y, va_list ap, ...);
 
 #endif

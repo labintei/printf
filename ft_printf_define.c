@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 10:02:02 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/16 12:26:28 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/17 15:51:34 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ int		ft_taille_flags(const char *s)
 	j = 0;
 	while(s[i] && j== 0)
 	{
-		while(s[i] && (ft_find(s[i], "-0 *")))
+		while(s[i] && (ft_find(s[i], "-0")))
 			i++;
 		while(s[i] && (ft_find(s[i],"0123456789")))
 			i++;
-		if(s[i] && ft_find(s[i], "."))
+		while(s[i] && ft_find(s[i], ".*"))
 			i++;
 		while(s[i] && (ft_find(s[i], "0123456789")))
 			i++;
@@ -67,14 +67,12 @@ int		ft_indicateur(struct f_flags *f, char *s)
 	int		y;
 
 	ft_init_int(&i, &j, &y);
-	while(s[i] && (ft_find(s[i], "0- *")))
+	while(s[i] && (ft_find(s[i], "0-")))
 		i++;
 	while(s[j] && j < i)
 	{
 		ft_find_char(y, s[j],"0", f);
 		ft_find_char(y, s[j],"-", f);
-		ft_find_char(y, s[j]," ", f);
-		ft_find_char(y, s[j],"*", f);
 		j++;
 	}
 	return(i);
