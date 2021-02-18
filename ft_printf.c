@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 13:44:03 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/17 15:42:04 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/18 14:39:41 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,24 @@ int		print_flags(const char *s, va_list ap, ...)
 {
 	struct f_flags	l;
 	int				n;
+	char			c;
 
+	c = 1;
 	n = 0;
 	ft_init_flags(&l);
 	ft_define_flags(++s, &l);
-	n = ft_print_flags(&l , ap);
-	n += ft_printf_type(l.type, ap);
+	ft_precision_f(&l, ap);
+	//n = ft_print_flags(&l , ap);()()
+	printf("\nTYPE CHECK %c", l.type);
+	printf("\n");
+	n += ft_print_type((l.type), c, ap);
 	return(n);
 }
 
 int		ft_print_flags(struct f_flags *f, va_list ap)
 {
-	return(1);
-}
 
-int		ft_printf_type(char t, va_list ap)
-{
-	if(t == 'c')
-		return(ft_putchar(va_arg(ap, int), 1));
-	if(t == 's')
-		return(ft_putstr(va_arg(ap, char*), 1, 0));
-	return(-1);
+	return(1);
 }
 
 int		ft_printf(const char *s,...)
@@ -59,11 +56,12 @@ int		ft_printf(const char *s,...)
 		}
 		if(s[n] == '%')
 		{
-			ret +=ft_print_type('u', 1, ap);
-			n += 2;
+			
+			printf("TAILLE FLAGS i%d\ni",(i = ft_taille_flags(s + n)));
+			ret += print_flags(s + n, ap);
+			n += i;
 		}
 	}
 	va_end(ap);
-	printf("\n%d",ret);
 	return(ret);
 }

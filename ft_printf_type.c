@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 13:24:53 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/17 14:42:11 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/18 14:01:37 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int		ft_print_type(char c, char y, va_list ap, ...)
 		return(ft_putchar(va_arg(ap, int), y));
 	if(c == 's')
 		return(ft_putstr(va_arg(ap, char*), y, 0));
-	//REGARDER POUR LE 0
 	if(c == 'p')
 		return(print_p(va_arg(ap, int)));
 	if(c == 'd' || c == 'i')

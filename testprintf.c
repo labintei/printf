@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_flags.c                                  :+:      :+:    :+:   */
+/*   testprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/17 15:41:57 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/18 13:09:10 by labintei         ###   ########.fr       */
+/*   Created: 2021/02/18 10:37:27 by labintei          #+#    #+#             */
+/*   Updated: 2021/02/18 10:51:46 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"ft_printf.h"
+#include<stdio.h>
 
-void		ft_precision_f(struct f_flags *f, va_list ap)
+int			main(void)
 {
-	if(f->precision == '3' || f->precision == '6')
-		f->largeur = va_arg(ap, int);
-	if(f->precision == '5' || f->precision == '6')
-		f->intprecision = va_arg(ap, int);
-	printf("\nLARGEUR :%d INTPRECISON %d",f->largeur, f->intprecision);
-	return	;
+	printf("%.0d\n", 1);
+	printf("%0*.*dI",5, 5, 256);
+	return(1);
 }

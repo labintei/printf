@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 14:15:46 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/17 15:39:03 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/18 14:39:38 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int			main(void)
 {
 	int		i;
 
-	i = 0;
-	ft_printf("%u", -123456789);
+	i = ft_printf("Lauranne %s", "Lauranne danse la salsa");
 	return(1);
-	//REVOIR U
 }

@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 10:02:02 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/17 15:51:34 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/18 14:14:18 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,30 +49,23 @@ char	ft_find(const char c, const char *s)
 	return(0);
 }
 
-void	ft_find_char(int y,const char c, const char *s, struct f_flags *f)
-{
-	if(ft_find(c,s))
-	{
-		if(!(ft_find(*s,(const char*)f->indicateur)))
-			(f->indicateur)[y] = *s;
-		y++;
-	}
-	return ;
-}
-
 int		ft_indicateur(struct f_flags *f, char *s)
 {
 	int		i;
 	int		j;
 	int		y;
+	int		c;
 
 	ft_init_int(&i, &j, &y);
-	while(s[i] && (ft_find(s[i], "0-")))
+	while(s[i] && ((ft_find(s[i], "0")) || (ft_find(s[i], "-"))))
 		i++;
+	y--;
 	while(s[j] && j < i)
 	{
-		ft_find_char(y, s[j],"0", f);
-		ft_find_char(y, s[j],"-", f);
+		if((!(ft_find('-',f->indicateur))) && ft_find(s[j],"-"))
+			(f->indicateur)[++y] = '-';
+		if((!(ft_find('0',f->indicateur))) && ft_find(s[j],"0"))
+			(f->indicateur)[++y] = '0';
 		j++;
 	}
 	return(i);

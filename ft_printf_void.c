@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 14:56:48 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/17 15:51:36 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/18 14:19:44 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ char	ft_precision(const char *s, int *i)
 				z += 3;
 		(*i)++;
 	}
-	while(ft_find((s[*i]), ".*"))
-		(*i)++;
 	return(z + '0');
 }
 
@@ -74,20 +72,25 @@ void	ft_define_flags(const char *s, struct f_flags *f)
 	int	 i;
 
 	i = ft_indicateur(f, (char *)s);
+	printf("INDICATEUR :%s",f->indicateur);
 	f->intprecision = 0;
 	while(s[i] && (c = ft_find(s[i],"0123456789")))
 	{
 		f->largeur = (f->largeur * 10) + (c - '0');
 		i++;
 	}
+	printf("\nLARGEUR :%d",f->largeur);
 	if(s[i] && ((ft_find(s[i],".") || ft_find(s[i],"*"))))
 		f->precision = ft_precision(s, &i);
+	printf("\nPRECISION :%c",f->precision);
 	while(s[i] && (c = ft_find(s[i], "0123456789")))
 	{
 		f->intprecision = (f->intprecision * 10) + (c - '0');
 		i++;
 	}
+	printf("\nINTPRECISION :%d",f->intprecision);
 	if(s[i] && (ft_find(s[i], "cspdiuXx%")))
 		f->type = s[i];
+	printf("\nTYPE :%c", (f->type));
 	return ;
 }
