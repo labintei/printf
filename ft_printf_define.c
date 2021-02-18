@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 10:02:02 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/18 14:14:18 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/18 15:24:27 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int		ft_indicateur(struct f_flags *f, char *s)
 	int		i;
 	int		j;
 	int		y;
-	int		c;
 
 	ft_init_int(&i, &j, &y);
 	while(s[i] && ((ft_find(s[i], "0")) || (ft_find(s[i], "-"))))
