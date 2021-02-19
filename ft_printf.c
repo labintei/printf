@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 13:44:03 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/18 15:24:54 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/19 13:50:39 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		print_flags(const char *s, va_list ap, ...)
 	ft_precision_f(&l, ap);
 	printf("\nTYPE CHECK %c", l.type);
 	printf("\n");
-	n += ft_print_type((l.type), c, ap);
+	n += ft_print_type(&l, c, ap);
 	return(n);
 }
 

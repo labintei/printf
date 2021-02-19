@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 13:43:17 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/18 13:55:57 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/19 14:45:15 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		ft_taille_flags(const char *s);
 int		print_flags(const char *s, va_list ap, ...);
 int		ft_printf(const char *s, ...);
 
+int		ft_print_largeur_diuXx(struct f_flags *f, int size);
 
 int		ft_unsigned(unsigned int n, char z);
 int		size_int(long int n, int sizebase);
@@ -50,9 +51,11 @@ int		ft_putchar(int n, char y);
 int		ft_putstr(char *s, char y, size_t n);
 int		basehexa(long int n, char a, char y);
 int		print_int(int n, char y);
-int		print_p(int c);
+int		print_p(int c, char y);
 
-int		ft_print_type(char c, char y, va_list ap, ...);
+int		ft_print_type(struct f_flags *f, char y, va_list ap, ...);
 void	ft_precision_f(struct f_flags *f, va_list ap);
+
+int		ft_dup(char *s, char *s2, int n);
 
 #endif

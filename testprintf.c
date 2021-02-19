@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 10:37:27 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/18 15:20:32 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/19 14:12:19 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int			main(void)
 	printf("\nPour d (meme comportement u, p, X, x, %%)");
 	printf("\nprecision 5 sur nb = 5 : %.5d", 5);
 	printf("\ncomportement sans precision 0 : %d", 0);
-	printf("\ncomportement speciale precision 0 sur 0 : %.0d(vide)", 0);
+	printf("\ncomportement speciale precision 0 sur 0 : %.0x(vide)", 0);
 	printf("\ncomportement normale precision 0 sur 5 : %.0d", 5);
 	printf("\nPour s");
 	printf("\nprecision 5 sur ILauranne va a la plageI : %.5s", "Lauranne va a la plage");
