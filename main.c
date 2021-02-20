@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 14:15:46 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/19 15:03:12 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/20 10:03:11 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ int			main(void)
 {
 	int		i;
 
-	i = ft_printf("Lauranne %5.5s", "Lauranne");
+	i = ft_printf("Lauranne %55.5d", 256489);
 	return(1);
 }
