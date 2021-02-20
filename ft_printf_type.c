@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 13:24:53 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/19 15:03:53 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/20 10:28:26 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		ft_precision_diuxX(struct f_flags *f, int size)
 int		ft_print_largeur(struct f_flags *f, int size)
 {
 	int		a;
-	int		largeurstock;
+
 	a = 0;
 	if(ft_find('-', f->indicateur))
 		a += print_jusqua(' ', f->largeur, size);
@@ -65,6 +65,7 @@ int		ft_print_type(struct f_flags *f, char y, va_list ap, ...)
 
 	n = 0;
 	a = 0;
+	d = 0;
 	if(f->type == 'c')
 		return(ft_putchar(va_arg(ap, int), y));
 	if(f->type == 's')
