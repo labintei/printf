@@ -6,7 +6,7 @@
 #    By: labintei <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/11 14:05:41 by labintei          #+#    #+#              #
-#    Updated: 2021/02/20 10:28:39 by labintei         ###   ########.fr        #
+#    Updated: 2021/02/20 10:50:26 by labintei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CC				= gcc
 CFLAGS			= -Wall -Wextra -Werror -I.
 RM				= rm -f
 
-NAME			= ft_printf.a
+NAME			= libftprintf.a
 
 all:		$(NAME)
 

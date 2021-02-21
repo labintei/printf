@@ -6,12 +6,11 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 13:44:03 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/20 10:21:31 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/20 13:36:21 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_printf.h"
-#include<stdio.h>
 
 int		print_flags(const char *s, va_list ap, ...)
 {
@@ -24,9 +23,7 @@ int		print_flags(const char *s, va_list ap, ...)
 	ft_init_flags(&l);
 	ft_define_flags(++s, &l);
 	ft_precision_f(&l, ap);
-	printf("\nTYPE CHECK %c", l.type);
-	printf("\n");
-	n += ft_print_type(&l, c, ap);
+	n += ft_print_type(&l,ap);
 	return(n);
 }
 
@@ -50,7 +47,7 @@ int		ft_printf(const char *s,...)
 		if(s[n] == '%')
 		{
 			
-			printf("TAILLE FLAGS i%d\ni",(i = ft_taille_flags(s + n)));
+			i = ft_taille_flags(s + n);
 			ret += print_flags(s + n, ap);
 			n += i;
 		}

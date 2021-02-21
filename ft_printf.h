@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 13:43:17 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/19 14:45:15 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/20 13:34:54 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include<stdarg.h>
 #include<stdlib.h>
-#include<stdio.h>
 #include<unistd.h>
 #include<string.h>
 
@@ -53,7 +52,7 @@ int		basehexa(long int n, char a, char y);
 int		print_int(int n, char y);
 int		print_p(int c, char y);
 
-int		ft_print_type(struct f_flags *f, char y, va_list ap, ...);
+int		ft_print_type(struct f_flags *f, va_list ap, ...);
 void	ft_precision_f(struct f_flags *f, va_list ap);
 
 int		ft_dup(char *s, char *s2, int n);
