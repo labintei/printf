@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 14:03:41 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/22 14:03:31 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/22 14:15:45 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		size_int(long int n, int sizebase)
 	return(size + 1);
 }
 
-int		basehexa(long int n, char a, char y)
+int		basehexa(unsigned long n, char a, char y)
 {
 	long long int	g;
 	long long int	c;
@@ -114,10 +114,10 @@ int		print_int(int n, char y)
 int		print_p(void *c, char y)
 {
 	int		i;
-	long int		z;
+	unsigned long	z;
 
 	i = 0;
-	z = (long int)&c;
+	z = (unsigned long)c;
 	i += basehexa(z, 0, y);
 	return(i);
 }

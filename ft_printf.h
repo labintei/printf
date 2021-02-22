@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 13:43:17 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/22 14:04:15 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/22 14:16:08 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		ft_unsigned(unsigned int n, char z);
 int		size_int(long int n, int sizebase);
 int		ft_putchar(int n, char y);
 int		ft_putstr(char *s, char y, size_t n);
-int		basehexa(long int n, char a, char y);
+int		basehexa(unsigned long  n, char a, char y);
 int		print_int(int n, char y);
 int		print_p(void *c, char y);
 

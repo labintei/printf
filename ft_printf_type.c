@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 13:24:53 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/22 14:02:51 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/22 15:38:41 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,27 +152,40 @@ int		ft_print_type(struct f_flags *f, va_list ap, ...)
 	{
 		v = va_arg(ap, void*);
 		size = print_p(v, 0);
-		if(f->intprecision == 0 && f->precision == '2')
+		if((v == NULL && f->intprecision == 0 && f->intprecision == '2'))
+			return(a += ft_putstr("0x", 1, 0));
+		if((f->precision == '2') && (v == 0))
 		{
-			d += ft_print_largeur(f, 2);
-			return((d += ft_putstr("0x", 1, 0)));
-		}
-		if(v == NULL)
-		{
-			d += ft_print_largeur(f, 3);
-			d += ft_putstr("0x0",1 , 0);
-			if(f->precision == '2' && f->precision > 1)
-				d += print_jusqua('0',f->intprecision, 1);
+			if(f->largeur > 2)
+				d += print_jusqua(' ',f->largeur, 2);
+			d += ft_putstr("0x",1,0);
+			if(f->intprecision > 2)
+				d += print_jusqua('0',f->intprecision, 0);
 			return(d);
 		}
-		d += ft_putstr("0x", 1, 0);
-		if(f->precision == '2' && f->intprecision > 1)
-			print_jusqua('0',f->intprecision, 1);
-		if(ft_find('-', f->indicateur))
+		if(ft_find('-',f->indicateur))
+		{
+			g += ft_putstr("0x", 1, 0);
+			if(f->intprecision > 2)
+				g += print_jusqua('0', f->intprecision, 0);
+			g += print_p(v, 1);
+		}
+		if((f->intprecision > f->largeur) && (f->intprecision > size + 2))
+		{
+			d += ft_putstr("0x", 1, 0);
+			d += print_jusqua('0', f->intprecision, size + 2);
+			z = 1;
+		}
+		d += print_jusqua(' ',f->largeur, size + 2);
+		if(g == 0)
+		{
+			if(z == 0)
+				a += ft_putstr("0x", 1, 0);
+			else
+				a += ft_putstr("00", 1, 0);
 			a += print_p(v, 1);
-		d += ft_print_largeur(f, size);
-		if(a == 0)
-			a += print_p(v, 1);
+		}
+		d += g;
 	}
 	if(f->type == 'd' || f->type == 'i')
 	{
