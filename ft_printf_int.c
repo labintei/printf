@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 14:03:41 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/20 13:58:16 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/22 14:03:31 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,13 +111,13 @@ int		print_int(int n, char y)
 	return(a);
 }
 
-int		print_p(int c, char y)
+int		print_p(void *c, char y)
 {
 	int		i;
 	long int		z;
 
+	i = 0;
 	z = (long int)&c;
-	i = ft_putstr("0x", y , 0);
 	i += basehexa(z, 0, y);
 	return(i);
 }

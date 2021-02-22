@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 13:24:53 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/22 09:23:05 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/22 14:02:51 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,20 +151,33 @@ int		ft_print_type(struct f_flags *f, va_list ap, ...)
 	if(f->type == 'p')
 	{
 		v = va_arg(ap, void*);
-		size = print_p((int)v, 0);
+		size = print_p(v, 0);
 		if(f->intprecision == 0 && f->precision == '2')
-			return(ft_putstr("0x", 1, 0));
-		d += ft_precision_diuxX(f,size);
+		{
+			d += ft_print_largeur(f, 2);
+			return((d += ft_putstr("0x", 1, 0)));
+		}
+		if(v == NULL)
+		{
+			d += ft_print_largeur(f, 3);
+			d += ft_putstr("0x0",1 , 0);
+			if(f->precision == '2' && f->precision > 1)
+				d += print_jusqua('0',f->intprecision, 1);
+			return(d);
+		}
+		d += ft_putstr("0x", 1, 0);
+		if(f->precision == '2' && f->intprecision > 1)
+			print_jusqua('0',f->intprecision, 1);
 		if(ft_find('-', f->indicateur))
-			a += print_p((int)v, 1);
+			a += print_p(v, 1);
 		d += ft_print_largeur(f, size);
 		if(a == 0)
-			a += print_p((int)v, 1);
+			a += print_p(v, 1);
 	}
 	if(f->type == 'd' || f->type == 'i')
 	{
 		i = va_arg(ap, int);
-		size = size_int((long)i, 10);
+		size = size_int(i, 10);
 		if(f->precision == '2' && f->intprecision == 0)
 			return((d += ft_print_largeur(f, 0)));
 		if(((ft_find('0', f->indicateur)) && ((f->largeur < size) && (f->largeur < f->intprecision) && (f->intprecision != '2')) && (f->intprecision > size))
@@ -226,15 +239,39 @@ int		ft_print_type(struct f_flags *f, va_list ap, ...)
 	if(f->type == 'x' || f->type == 'X')
 	{
 		l = va_arg(ap, long int);
-		d += ft_precision_diuxX(f, size);
+		size = basehexa(l, n, 0);
 		if(f->type == 'X')
 			n = 1;
-		size = basehexa(l, n, 0);
-		if(ft_find('-',f->indicateur))
+		if(f->precision == '2' && l == 0)
+		{
+			if(ft_find('-',f->indicateur))
+			{
+				d += print_jusqua('0', f->intprecision, 0);
+				return(d += print_jusqua(' ', f->largeur, f->intprecision));
+			}
+			d += print_jusqua(' ', f->largeur, f->intprecision);
+			return(d += print_jusqua('0', f->intprecision, 0));
+		}
+		if(!(ft_find('-', f->indicateur)))
+		{
+			if(f->intprecision > size)
+				d += ft_print_largeur(f, f->intprecision);
+			else
+				d += ft_print_largeur(f, size);
+		}
+		if(f->intprecision > 0 && f->precision == '2')
+			d += print_jusqua('0', f->intprecision ,size);
+		if(ft_find('-',f->indicateur) && (size > f->intprecision))
 			a = basehexa(l, n, 1);
-		d += ft_print_largeur(f, size);
 		if(a == 0)
 			a += basehexa(l, n, 1);
+		if(ft_find('-',f->indicateur))
+		{
+			if(size < f->intprecision)
+				d += ft_print_largeur(f, f->intprecision);
+			else
+				d += ft_print_largeur(f, size + d);
+		}
 	}
 	if(f->type == '%')
 	{

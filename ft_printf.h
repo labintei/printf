@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 13:43:17 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/20 13:34:54 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/22 14:04:15 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		ft_putchar(int n, char y);
 int		ft_putstr(char *s, char y, size_t n);
 int		basehexa(long int n, char a, char y);
 int		print_int(int n, char y);
-int		print_p(int c, char y);
+int		print_p(void *c, char y);
 
 int		ft_print_type(struct f_flags *f, va_list ap, ...);
 void	ft_precision_f(struct f_flags *f, va_list ap);

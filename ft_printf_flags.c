@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 15:41:57 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/20 11:28:24 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/22 13:12:07 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		ft_precision_f(struct f_flags *f, va_list ap)
 {
-	if(f->precision == '3' || f->precision == '6')
+	if(f->precision == '3' || f->precision == '6' )
 		f->largeur = va_arg(ap, int);
 	if(f->precision == '5' || f->precision == '6')
 		f->intprecision = va_arg(ap, int);
