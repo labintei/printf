@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 10:02:02 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/22 10:12:19 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/22 15:51:43 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int		ft_taille_flags(const char *s)
 			i++;
 		while(s[i] && (ft_find(s[i], "0123456789")))
 			i++;
-		if(s[i] && (ft_find(s[i], "cspdiuXx")))
+		if(s[i] && (ft_find(s[i], "cspdiuXx%")))
 			i++;
 		j = 1;
 	}
-	if(!(ft_find(s[i - 1], "cspdiuXx")))
+	if(!(ft_find(s[i - 1], "cspdiuXx%")))
 		return(-1);
 	return(i);
 }
