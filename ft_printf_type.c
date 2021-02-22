@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 13:24:53 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/21 17:04:31 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/22 09:23:05 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ int		ft_print_type(struct f_flags *f, va_list ap, ...)
 	char	n;
 	int		z;
 	int		g;
+	void	*v;
 	char	*s;
 	int		largeur;
 	int		i;
@@ -121,7 +122,11 @@ int		ft_print_type(struct f_flags *f, va_list ap, ...)
 	{
 		size = 1;
 		i = (va_arg(ap, int));
+		if((!(ft_find('-',f->indicateur))))
+			d += ft_print_largeur(f,1);
 		d += ft_putchar(i, 1);
+		if(ft_find('-',f->indicateur))
+			d += ft_print_largeur(f,1);
 		return(d);
 	}
 	if(f->type == 's')
@@ -145,14 +150,16 @@ int		ft_print_type(struct f_flags *f, va_list ap, ...)
 	}
 	if(f->type == 'p')
 	{
-		i = va_arg(ap, int);
-		size = print_p((int)i, 0);
+		v = va_arg(ap, void*);
+		size = print_p((int)v, 0);
+		if(f->intprecision == 0 && f->precision == '2')
+			return(ft_putstr("0x", 1, 0));
 		d += ft_precision_diuxX(f,size);
 		if(ft_find('-', f->indicateur))
-			a += print_p(i, 1);
+			a += print_p((int)v, 1);
 		d += ft_print_largeur(f, size);
 		if(a == 0)
-			a += print_p((int)i, 1);
+			a += print_p((int)v, 1);
 	}
 	if(f->type == 'd' || f->type == 'i')
 	{
