@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 14:03:41 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/22 14:15:45 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/23 15:00:19 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int		basehexa(unsigned long n, char a, char y)
 	return (g - 1);
 }
 
-int		print_int(int n, char y)
+int		print_int(long int n, char y)
 {
 	long	int g;
 	int		i;

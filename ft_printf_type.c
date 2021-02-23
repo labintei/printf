@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 13:24:53 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/23 12:56:34 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/23 15:03:37 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,21 +189,18 @@ int		ft_print_type(struct f_flags *f, va_list ap, ...)
 	}
 	if(f->type == 'd' || f->type == 'i')
 	{
-		l = va_arg(ap, long int);
-		if(l == 2147483648 || l == -2147483648)
-			return(ft_putstr("-2147483648", 1, 0));
-		i = (int)l;
-		size = size_int(i, 10);
+		l = va_arg(ap, int);
+		size = size_int(l, 10);
 		if(f->precision == '2' && f->intprecision == 0)
 			return((d += ft_print_largeur(f, 0)));
 		if(((ft_find('0', f->indicateur)) && ((f->largeur < size) && (f->largeur < f->intprecision) && (f->intprecision != '2')) && (f->intprecision > size))
 				|| (ft_find('0', f->indicateur) && (f->largeur > size) && (f->largeur > f->intprecision) && (f->intprecision <= 0)))
 		{
-			if(i < 0)
+			if(l < 0)
 			{
 				d += ft_putchar('-',1);
 				size--;
-				i *= -1;
+				l *= -1;
 			}
 		}
 		if(!(ft_find('-',f->indicateur)))
@@ -213,15 +210,15 @@ int		ft_print_type(struct f_flags *f, va_list ap, ...)
 			else
 				d += ft_print_largeur(f,(size + d));
 		}
-		if(i < 0)
+		if(l < 0)
 		{
 			d += ft_putchar('-', 1);
-			i *= -1;
+			l *= -1;
 			size--;
 			n = 1;
 		}
 		d += ft_precision_diuxX(f, size);
-		a += print_int(i,1);
+		a += print_int(l,1);
 		if(ft_find('-',f->indicateur))
 			d += ft_print_largeur(f, size + d);
 	}
