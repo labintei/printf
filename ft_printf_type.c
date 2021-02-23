@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 13:24:53 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/22 15:53:22 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/23 12:56:34 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,7 +189,10 @@ int		ft_print_type(struct f_flags *f, va_list ap, ...)
 	}
 	if(f->type == 'd' || f->type == 'i')
 	{
-		i = va_arg(ap, int);
+		l = va_arg(ap, long int);
+		if(l == 2147483648 || l == -2147483648)
+			return(ft_putstr("-2147483648", 1, 0));
+		i = (int)l;
 		size = size_int(i, 10);
 		if(f->precision == '2' && f->intprecision == 0)
 			return((d += ft_print_largeur(f, 0)));

@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 14:56:48 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/22 11:53:55 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/23 10:56:30 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,33 +40,7 @@ void	ft_init_int(int *a, int *b, int *c)
 	return ;
 }
 
-char	ft_precision(const char *s, int *i)
-{
-	char	z;
-
-	z = 0;
-	while(s[(*i)] && ft_find(s[(*i)], "*"))
-	{	
-		if(z == 0)
-			z = 1;
-		(*i)++;
-	}
-	while(s[(*i)] && ft_find(s[(*i)],"."))
-	{
-		if(z == 0 || z == 1)
-			z += 2;
-		(*i)++;
-	}
-	while(s[(*i)] && ft_find(s[(*i)],"*"))
-	{
-		if(z == 2 || z == 3)
-				z += 3;
-		(*i)++;
-	}
-	return(z + '0');
-}
-
-void	ft_define_flags(const char *s, struct f_flags *f)
+void	ft_define_flags(const char *s, struct f_flags *f, va_list ap)
 {
 	char c;
 	int	 i;
@@ -81,7 +55,7 @@ void	ft_define_flags(const char *s, struct f_flags *f)
 		i++;
 	}
 	if(s[i] && ((ft_find(s[i],".") || ft_find(s[i],"*"))))
-		f->precision = ft_precision(s, &i);
+		ft_precision(s, &i, f, ap);
 	if(s[i] && ((ft_find(s[i],"0"))))
 	{
 		while((f->indicateur)[d])
@@ -89,7 +63,7 @@ void	ft_define_flags(const char *s, struct f_flags *f)
 		(f->indicateur)[d] = 'a';
 		(f->indicateur)[++d] = '\0';
 	}
-	while(s[i] && (c = ft_find(s[i], "0123456789")))
+	while(s[i] && (c = ft_find(s[i], "0123456789")) && (f->intprecision == 0))
 	{
 		f->intprecision = (f->intprecision * 10) + (c - '0');
 		i++;

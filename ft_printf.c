@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 13:44:03 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/22 15:47:33 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/23 10:59:12 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int		print_flags(const char *s, va_list ap, ...)
 	c = 1;
 	n = 0;
 	ft_init_flags(&l);
-	ft_define_flags(++s, &l);
-	ft_precision_f(&l, ap);
+	ft_define_flags(++s, &l, ap);
 	n += ft_print_type(&l,ap);
 	return(n);
 }

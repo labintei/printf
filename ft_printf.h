@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 13:43:17 by labintei          #+#    #+#             */
-/*   Updated: 2021/02/22 14:16:08 by labintei         ###   ########.fr       */
+/*   Updated: 2021/02/23 10:56:45 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_init_flags(struct f_flags *f);
 void	ft_init_int(int *a, int *b, int *c);
 
 int		ft_indicateur(struct f_flags *f, char *s);
-void	ft_define_flags(const char *s, struct f_flags *f);
+void	ft_define_flags(const char *s, struct f_flags *f, va_list ap);
 
 int		ft_print_flags(struct f_flags *l, va_list ap);
 int		ft_printf_type(char t,char y, va_list ap);
@@ -53,7 +53,7 @@ int		print_int(int n, char y);
 int		print_p(void *c, char y);
 
 int		ft_print_type(struct f_flags *f, va_list ap, ...);
-void	ft_precision_f(struct f_flags *f, va_list ap);
+void	ft_precision(const char *s, int *i,struct f_flags *f, va_list ap);
 
 int		ft_dup(char *s, char *s2, int n);
 
