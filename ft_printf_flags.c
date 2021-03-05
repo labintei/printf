@@ -6,77 +6,104 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 15:41:57 by labintei          #+#    #+#             */
-/*   Updated: 2021/03/01 15:49:00 by labintei         ###   ########.fr       */
+/*   Updated: 2021/03/05 10:27:46 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"ft_printf.h"
+#include "ft_printf.h"
+
+void		ft_init_flags(struct s_flags *f)
+{
+	libere_s(f->i);
+	f->l = 0;
+	f->p = 0;
+	f->ip = -1;
+	f->type = 0;
+	return ;
+}
 
 void		ajout_indicateur(char c, char *s)
 {
 	int		n;
 
 	n = 0;
-	if(!(ft_find(c, s)))
+	if (!(ft_find(c, s)))
 	{
-		while(s[n])
+		while (s[n])
 			n++;
 		s[n] = c;
 		s[++n] = '\0';
 	}
-	return		;
+	return ;
 }
 
-void		ft_precision(const char *s, int *i, struct f_flags *f, va_list ap)
+void		ft_precision(const char *s, int *i, struct s_flags *f, va_list ap)
 {
-	char	z;
 	int		j;
-	int		y;
 
 	j = 0;
-	z = 0;
-	y = 0;
-	if(s[*i] && ft_find(s[(*i)], "*"))
+	if (s[*i] && ft_find(s[(*i)], "*"))
 	{
-		j = va_arg(ap,int);
-		ajout_indicateur('L',f->indicateur);
-		if(j < 0)
-		{
-			ajout_indicateur('-',f->indicateur);
-			ajout_indicateur('a',f->indicateur);
-			f->largeur = -j;
-		}
-		else
-		{
-			f->largeur = j;
-		}
-	}
-	while(s[(*i)] && ft_find(s[(*i)], "*"))
-		(*i)++;
-	if(s[(*i)] && ft_find(s[(*i)],"."))
-		f->precision = '2';
-	while(s[(*i)] && ft_find(s[(*i)],"."))
-		(*i)++;
-	y = 0;
-	if(s[*i] && ft_find(s[(*i)], "*"))
-	{
-		ajout_indicateur('P',f->indicateur);
 		j = va_arg(ap, int);
-		if(j < 0)
+		ajout_indicateur('L', f->i);
+		if (j < 0)
 		{
-			f->intprecision = -2;
+			ajout_indicateur('-', f->i);
+			ajout_indicateur('a', f->i);
+			f->l = -j;
 		}
 		else
-			f->intprecision = j;
+			f->l = j;
 	}
-	while(s[(*i)] && ft_find(s[(*i)], "*"))
+	while (s[(*i)] && ft_find(s[(*i)], "*"))
 		(*i)++;
-	if((ft_find('L',f->indicateur) && (f->precision == '2') && (f->intprecision != -2)))
+	ft_prec_bis(s, i, f, ap);
+	return ;
+}
+
+void		ft_prec_bis(const char *s, int *i, struct s_flags *f, va_list ap)
+{
+	int		j;
+
+	if (s[(*i)] && ft_find(s[(*i)], "."))
+		f->p = '2';
+	while (s[(*i)] && ft_find(s[(*i)], "."))
+		(*i)++;
+	if (s[*i] && ft_find(s[(*i)], "*"))
 	{
-		y = 0;
-		while(f->indicateur[y] && f->indicateur[y] != '0')
-			y++;
-		if(f->indicateur[y] == '0')
-			f->indicateur[y] = 's';
+		ajout_indicateur('P', f->i);
+		j = va_arg(ap, int);
+		if (j < 0)
+			(f->ip = -2);
+		else
+			(f->ip = j);
 	}
+	while (s[(*i)] && ft_find(s[(*i)], "*"))
+		(*i)++;
+	j = 0;
+	if ((ft_find('L', f->i)) && (f->p == '2') && (f->ip != -2))
+	{
+		while ((f->i)[j] && (f->i)[j] != '0')
+			j++;
+		(f->i)[j] = ((f->i)[j] == '0') ? 's' : '\0';
+	}
+	return ;
+}
+
+int			size_int(long int n, int sizebase)
+{
+	long int	i;
+	int			size;
+
+	if (n < 0)
+		size = 1;
+	else
+		size = 0;
+	if (n < 0)
+		i = -n;
+	else
+		i = n;
+	while (i >= sizebase && ++size)
+		i /= sizebase;
+	return (size + 1);
 }

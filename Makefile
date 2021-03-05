@@ -6,13 +6,13 @@
 #    By: labintei <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/11 14:05:41 by labintei          #+#    #+#              #
-#    Updated: 2021/02/26 16:46:32 by labintei         ###   ########.fr        #
+#    Updated: 2021/03/05 09:57:25 by labintei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS		=	ft_printf.c ft_printf_charstr.c ft_printf_define.c \
 				ft_printf_flags.c ft_printf_int.c ft_printf_type.c \
-				ft_printf_void.c
+				ft_printf_type_bis.c
 OBJS		= $(SRCS:.c=.o)
 
 CC				= gcc
