@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 13:24:53 by labintei          #+#    #+#             */
-/*   Updated: 2021/03/06 16:23:37 by labintei         ###   ########.fr       */
+/*   Updated: 2021/03/06 16:33:35 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,19 @@ int		ft_print_type_di(struct s_flags *f, va_list ap, ...)
 	l = va_arg(ap, int);
 	neg = (l < 0) ? 1 : 0;
 	size = size_int(l, 10);
-	largeur = (f -> ip + neg > size) ? f->ip + neg : size;
+	largeur = (f->ip + neg > size) ? f->ip + neg : size;
 	if ((f->p == '2' && ((f->ip == -1) || ((f->ip == 0) && (l == 0)))))
 		return ((a += print_j(' ', f->l, 0)));
-	if ((!(ft_find('-', f->i))) && ((!(ft_find('0', f->i))) || (f->p == '2' && f->ip >= 0)))
-		a += print_j(' ', f->l, largeur);
+	a += ((!ft_find('-', f->i)) && (!(ft_find('0', f->i)) || (f->p == '2' && \
+	f->ip >= 0))) ? print_j(' ', f->l, largeur) : 0;
 	size -= (neg == 1) ? 1 : 0;
 	l *= (neg == 1) ? -1 : 1;
-	if(neg == 1)
-		ft_putchar('-', 1);
+	(neg == 1) ? ft_putchar('-', 1) : 0;
 	a += (f->p == '2' && f->ip >= 0) ? print_j('0', f->ip, size) : 0;
-	if((ft_find('0', f->i)) && ((!(ft_find('-',f->i))) && (a == 0)))
+	if ((ft_find('0', f->i)) && ((!(ft_find('-', f->i))) && (a == 0)))
 		a += print_j('0', f->l, largeur);
 	a += print_int(l, 1);
-	if(ft_find('-', f->i))
-		a += print_j(' ', f->l, largeur);
+	a += (ft_find('-', f->i)) ? print_j(' ', f->l, largeur) : 0;
 	a += (neg == 1) ? 1 : 0;
 	return (a);
 }
@@ -73,10 +71,11 @@ int		ft_print_type_u(struct s_flags *f, va_list ap, ...)
 	largeur = (f->ip > size) ? f->ip : size;
 	if ((f->p == '2' && ((f->ip == -1) || ((f->ip == 0) && (u == 0)))))
 		return (a += print_j(' ', f->l, 0));
-	if ((!(ft_find('-', f->i))) && ((!(ft_find('0', f->i))) || (f->p == '2' && f->ip >= 0)))
+	if ((!(ft_find('-', f->i))) && ((!(ft_find('0', f->i))) || (f->p == '2' &&\
+					f->ip >= 0)))
 		a += print_j(' ', f->l, largeur);
 	a += (f->p == '2' && f->ip >= 0) ? print_j('0', f->ip, size) : 0;
-	if ((ft_find('0', f->i)) && (!(ft_find('-',f->i))) && (a == 0))
+	if ((ft_find('0', f->i)) && (!(ft_find('-', f->i))) && (a == 0))
 		a += print_j('0', f->l, size);
 	a += ft_unsigned(u, 1);
 	if (ft_find('-', f->i))
@@ -99,7 +98,8 @@ int		ft_print_type_x(struct s_flags *f, va_list ap, ...)
 	if (l == 0 && (f->p == '2') && (f->ip == 0) && (l == 0))
 		return ((a += print_j(' ', f->l, 0)));
 	largeur = (f->ip > size) ? f->ip : size;
-	if ((!(ft_find('-', f->i)) && ((!(ft_find('0', f->i))) || (f->p == '2' && f->ip >= 0))))
+	if ((!(ft_find('-', f->i)) && ((!(ft_find('0', f->i))) || (f->p == '2' &&\
+						f->ip >= 0))))
 		a += print_j(' ', f->l, largeur);
 	a += (f->p == '2' && f->ip >= 0) ? print_j('0', f->ip, size) : 0;
 	if (ft_find('0', f->i) && (!(ft_find('-', f->i))) && (a == 0))
