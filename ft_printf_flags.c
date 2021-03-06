@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 15:41:57 by labintei          #+#    #+#             */
-/*   Updated: 2021/03/05 10:27:46 by labintei         ###   ########.fr       */
+/*   Updated: 2021/03/06 16:22:50 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,6 @@ void		ft_prec_bis(const char *s, int *i, struct s_flags *f, va_list ap)
 	while (s[(*i)] && ft_find(s[(*i)], "*"))
 		(*i)++;
 	j = 0;
-	if ((ft_find('L', f->i)) && (f->p == '2') && (f->ip != -2))
-	{
-		while ((f->i)[j] && (f->i)[j] != '0')
-			j++;
-		(f->i)[j] = ((f->i)[j] == '0') ? 's' : '\0';
-	}
 	return ;
 }
 

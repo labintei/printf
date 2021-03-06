@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 13:55:23 by labintei          #+#    #+#             */
-/*   Updated: 2021/03/05 11:01:39 by labintei         ###   ########.fr       */
+/*   Updated: 2021/03/06 16:22:24 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ int		ft_print_type_modulo(struct s_flags *f)
 	int		a;
 
 	a = 0;
-	if (!(ft_find('-', f->i)) && (!ft_find('0', f->i)))
+	if((f->p == '2') && (f->ip <= 0))
+		f->p = 0;
+	if ((!(ft_find('-', f->i))) && (!(ft_find('0', f->i))))
 		a += print_j(' ', f->l, 1);
-	if (ft_find('0', f->i) && (!ft_find('-', f->i)))
+	if (ft_find('0', f->i) && (!(ft_find('-', f->i))))
 		a += print_j('0', f->l, 1);
 	a += ft_putchar('%', 1);
 	if (ft_find('-', f->i))

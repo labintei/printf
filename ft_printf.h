@@ -6,7 +6,7 @@
 /*   By: labintei <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 13:43:17 by labintei          #+#    #+#             */
-/*   Updated: 2021/03/05 10:26:35 by labintei         ###   ########.fr       */
+/*   Updated: 2021/03/06 16:22:07 by labintei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,6 @@ int				size_int_hexa_bis(unsigned long long i, unsigned long
 				long int size);
 void			ft_prec_bis(const char *s, int	*i, struct s_flags *f,
 				va_list ap);
-int				init(struct s_flags *f, int n, int z, char y);
-int				ft_di(long int *l);
-int				ft_di_bis(struct s_flags *f, int neg, int size, char y);
 void			ajout_indicateur(char c, char *s);
 
 #endif
